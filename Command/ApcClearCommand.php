@@ -49,6 +49,9 @@ class ApcClearCommand extends ContainerAwareCommand
         }
 
         $webDir = $this->getContainer()->getParameter('ornicar_apc.web_dir');
+        
+        echo '$webDir = ' $webDir;
+        
         if (!is_dir($webDir)) {
             throw new \InvalidArgumentException(sprintf('Web dir does not exist "%s"', $webDir));
         }
@@ -94,7 +97,7 @@ class ApcClearCommand extends ContainerAwareCommand
             }
 
             if (!$result) {
-                unlink($file);
+                // unlink($file);
                 throw new \RuntimeException(sprintf('Unable to read "%s", does the host locally resolve?', $url));
             }
         }
